@@ -5,9 +5,17 @@ const Counter = () => {
   const [theme, setTheme] = useState('light');
   const [count, setCount] = useState(0);
 
-  function changeTheme() {
+  function changeTheme(e) {
+    const id = e.target.id;
+    if (id === 'dark') {
+      setTheme('dark');
+    } else if (id === 'light'){
+      setTheme('light');
+    }
+    else if (id === 'toggle')
     setTheme(theme === 'light' ? 'dark' : 'light');
   }
+
   function handleIncrement() {
     setCount(c => c + 1);
   };
@@ -17,8 +25,10 @@ const Counter = () => {
 
   return (
     <div className={`state ${theme}`}>
-      <h1>Theme</h1>
-      <button onClick={changeTheme}>Press to Change Theme</button>
+      <h1>UseState Component</h1>
+      <button id="dark" onClick={changeTheme}>Dark</button>
+      <button id = "light" onClick={changeTheme}>Light</button>
+      <button id="toggle" onClick={changeTheme}>Toggle</button>
       <h2>{count}</h2>
       <button onClick={handleIncrement}>
         Increment
